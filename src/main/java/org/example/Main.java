@@ -15,23 +15,21 @@ public class Main {
         System.out.println("Введіть число N:");
         while (check) {
 
-            // Перевіряємо, чи є введені дані цілим числом
+            // Перевіряємо, чи є введені дані коректні
             if (info.hasNextInt()) {
                 int n = info.nextInt();
-                // Якщо число додатне, припиняємо цикл
                 if (n > 0) {
                     check = false;
                     Fibonacci fibonacci = new Fibonacci(n);
-                    fibonacci.Print();
+                    fibonacci.print();
                 } else {
                     System.out.println("Число має бути додатнім. Введіть ще раз:");
                 }
             } else {
                 System.out.println("Введені дані не є числом. Введіть ще раз:");
-                info.next();  // Очищуємо некоректний ввід
+                info.next();
             }
         }
-        info.close();  // Закриваємо сканер
+        info.close();
     }
-
 }

@@ -5,8 +5,8 @@ package org.example;
  */
 
 public class Fibonacci {
-    private int number;
-    private int number2;
+    private final int inputnum;
+    private final int fibnum;
 
     /**
      * Конструктор класу Fibonacci.
@@ -14,8 +14,8 @@ public class Fibonacci {
      * @param n Ціле число для обчислення числа Фібоначчі.
      */
     public Fibonacci(int n) {
-        this.number = n;
-        this.number2 = Calculate(n);
+        this.inputnum = n;
+        this.fibnum = Calculate(n);
     }
 
     /**
@@ -26,9 +26,11 @@ public class Fibonacci {
      */
     private int Calculate(int n) {
         if (n == 0) return 0;
-        if (n == 1 || n == 2) return 2;
-        int fib1 = 1, fib2 = 2, fibNum = 0;
-        for (int i = 3; i <= n; i++) {
+        if (n == 1) return 1;
+
+        int fib1 = 0, fib2 = 1;
+        int fibNum = 0;
+        for (int i = 2; i <= n; i++) {
             fibNum = fib1 + fib2;
             fib1 = fib2;
             fib2 = fibNum;
@@ -42,8 +44,8 @@ public class Fibonacci {
      * @return true, якщо умова виконується, false - якщо ні.
      */
     public boolean Check() {
-        int fibPlus2 = Calculate(this.number + 2);
-        int TwoN = (int) Math.pow(2, this.number);
+        int fibPlus2 = Calculate(this.inputnum + 2);
+        int TwoN = (int) Math.pow(2, this.inputnum);
         return fibPlus2 < TwoN;
     }
 
@@ -53,7 +55,7 @@ public class Fibonacci {
      * @return Вхідне число n.
      */
     public int getNumber() {
-        return this.number;
+        return this.inputnum;
     }
 
     /**
@@ -62,14 +64,14 @@ public class Fibonacci {
      * @return Розраховане число Фібоначчі.
      */
     public int getNumber2() {
-        return this.number2;
+        return this.fibnum;
     }
 
     /**
      * Виводить результати обчислення числа Фібоначчі та перевірку умови.
      */
-    public void Print() {
-        System.out.print("\nЗначення числа Фібоначі: " + this.number2);
+    public void print() {
+        System.out.print("\nЗначення числа Фібоначі: " + this.fibnum);
         System.out.print("\nПеревірка умови задачі: " + Check());
     }
 }
